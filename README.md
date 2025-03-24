@@ -3,7 +3,7 @@
 
 
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=810&height=100&lines=+THANKS FOR CHOOSING+ESKOBA-MD;MULTI+DEVICE+WHATSAPP+BOT;CREATED+BY+ESKOBA OWNER+RUKA" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=810&height=100&lines=+THANKS FOR CHOOSING+ESKOBA-MD;DEVICE+WHATSAPP+BOT;CREATED+BY+RTD+NIMA+OWNER+RUKA" alt="Typing SVG" /></a>
   </p>
   
 --- 
