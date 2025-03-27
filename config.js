@@ -8,7 +8,7 @@ function convertToBool(text, fault = 'true') {
 
 //--------------------------Malvin King--------------------------------------
 module.exports = {
-    SESSION_ID: process.env.SESSION_ID || "h0Q1nAgZ#sjHvhUdrZdrsLpDrmkUPu_1uU9tAFxHt6LyrjZbjtGM",
+    SESSION_ID: process.env.SESSION_ID || "PUpyBLJa#ijpPLg9BkriVDrBMtaVnoZHIWLGGqFVLC3Ia8ZPHdsA",
     CAPTION: process.env.CAPTION || "*MR LOKU NIMAH*",
     ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "true",
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
@@ -20,7 +20,7 @@ module.exports = {
     AUTO_STICKER: process.env.AUTO_STICKER || "false",
     AUTO_REPLY: process.env.AUTO_REPLY || "true",
     ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/lif2z7.jpg",
-    ALIVE_MSG: process.env.ALIVE_MSG || "ʜɪ ᴀᴍ ᴀʟɪᴠᴇ ɴᴏᴡ ᴀᴍ ᴅ-xᴛʀᴏ-ᴍᴅ ᴛʜᴇ ʙᴇsᴛ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ🚀",
+    ALIVE_MSG: process.env.ALIVE_MSG || "𝗛𝗜 𝗔𝗠 𝗔𝗟𝗜𝗩𝗘 𝗡𝗢𝗪 𝗔𝗠 𝗡𝗜𝗠𝗔-𝗠𝗗 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗕𝗢𝗧🚀",
     ANTI_LINK: process.env.ANTI_LINK || "false",
     ANTI_BAD: process.env.ANTI_BAD || "true",
     PREFIX: process.env.PREFIX || ".",
@@ -30,7 +30,7 @@ module.exports = {
     OWNER_REACT: process.env.OWNER_REACT || "true",
     BOT_NAME: process.env.BOT_NAME || "『 NIMA-MD 』",
     AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",
-    AUTO_STATUS__MSG: process.env.AUTO_STATUS__MSG || "`Status Seen By D-XTRO-MD Bot 🦄 `",
+    AUTO_STATUS__MSG: process.env.AUTO_STATUS__MSG || "`STATUS SEEN BY NIMA-MD BOT🦄 `",
     OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39", // omdbapi.com
 };
 //--------------MADE BY MALVIN KING 2025---------------->-
