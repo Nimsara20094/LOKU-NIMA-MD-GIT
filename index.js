@@ -49,7 +49,7 @@ const port = process.env.PORT || 9090;
 //=============================================
 
 async function connectToWA() {
-console.log("𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙽𝙶 ᴅ-xᴛʀᴏ-ᴍᴅ 🎭...");
+console.log("𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙽𝙶 𝙽𝙸𝙼𝙰-𝙼𝙳 🎭...");
 const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/session/')
 var { version } = await fetchLatestBaileysVersion()
 
@@ -77,15 +77,15 @@ require("./plugins/" + plugin);
 }
 });
 console.log('𝙿𝙻𝚄𝙶𝙸𝙽𝚂 𝙵𝙸𝙻𝙴𝚂 𝙸𝙽𝚂𝚃𝙰𝙻𝙻 𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈 ✅')
-console.log('𝙻𝙾𝚁𝙳 ᴅ-xᴛʀᴏ-ᴍᴅ 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 𝚃𝙾 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝙴𝙽𝙹𝙾𝚈 ✅')
+console.log('𝙽𝙸𝙼𝙰-𝙼𝙳 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 𝚃𝙾 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝙴𝙽𝙹𝙾𝚈 ✅')
 
 let up = ` ʙᴏᴛ⇨⇨ Connected Successfully!!!!!!* ✅ 
 
- ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴅ-xᴛʀᴏ-ᴍᴅ
+ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ɴɪᴍᴀ-ᴍᴅ
 
 *🔹 ᴘʀᴇғɪx:* *${prefix}*
 
-*🔹 ᴏᴡɴᴇʀ:* 94781536595
+*🔹 ᴏᴡɴᴇʀ:* +94769091078
 
 *🖇️Join My WhatsApp Channels✓💗* 
 
@@ -97,7 +97,7 @@ let up = ` ʙᴏᴛ⇨⇨ Connected Successfully!!!!!!* ✅
 
  - : ᴜɴᴅᴇꜰɪɴᴇᴅ
 
-> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ ᴅɪɴᴇꜱʜ ᴏꜰᴄ 🤹‍♂️ ʙᴇᴛᴀ ꜱᴇʀᴠɪᴄᴇ*`;
+> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ ʟᴏᴋᴜ ɴɪᴍᴀ 🤹‍♂️ ʙᴇᴛᴀ ꜱᴇʀᴠɪᴄᴇ*`;
 conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/ptas3k.JPG` }, caption: up })
 
 }
@@ -242,7 +242,7 @@ command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, i
 })
 }
 app.get("/", (req, res) => {
-res.send ("D-XTRO-MD is 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 ✅");
+res.send ("NIMA-MD is 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 ✅");
 });
 app.listen(port, () => console.log(`Xlord Server listening on port http://localhost:${port}`));
 setTimeout(() => {
