@@ -91,7 +91,7 @@
 
 ------------
  
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new-app?template=https://github.com/Lokunima2001/DNS-KING)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new-app?template=https://github.com/Lokunima2001/LOKU-NIMA-MD-GIT)
 
 ----------
 
