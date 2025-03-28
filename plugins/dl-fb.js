@@ -29,7 +29,7 @@ cmd({
       throw new Error("No valid video URL found.");
     }
 
-    const formattedInfo = `📥 *Downloaded in ${videoData.quality} Quality*\n\n> 🔗 *𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗕𝗬 𝗥𝗧𝗗 𝗡𝗜𝗠𝗔-𝗠𝗗*`;
+    const formattedInfo = `📥 *Downloaded in ${videoData.quality} Quality*\n\n> 🔗 *𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗕𝗬 𝗡𝗜𝗠𝗔-𝗠𝗗*`;
 
     await conn.sendMessage(from, {
       video: { url: videoData.url },
@@ -40,7 +40,7 @@ cmd({
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363324386877609@newsletter',
-          newsletterName: '𝗥𝗧𝗗 𝗡𝗜𝗠𝗔 𝗙𝗕',
+          newsletterName: '𝗡𝗜𝗠𝗔 𝗙𝗕',
           serverMessageId: 143
         }
       }
