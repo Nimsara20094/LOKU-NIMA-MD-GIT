@@ -48,7 +48,7 @@
 <p/>
 2. USE SESSION 2 IF SESSION:1 DOESN'T WORK.
 <p align="center">
-<a href="https://ali-md-web-qr-pair-z8r2.onrender.com/pair"><img height= "35" title="Author" src="https://ali-md-web-qr-pair-z8r2.onrender.com/pair"></a>
+<a href="https://ali-md-web-qr-pair-z8r2.onrender.com/pair"><img height= "35" title="Author" src="https://img.shields.io/badge/GET SESSION ID:2-black?style=for-the-badge&logo=render"></a>
 <p/>
 
 ---------------
