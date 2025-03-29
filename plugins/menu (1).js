@@ -37,7 +37,7 @@ async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, send
 
 try{
 let madeMenu = `*╭══〘〘 ${config.BOT_NAME} 〙〙*
-*┃♻️* *ʀᴜɴᴛɪᴍᴇ* : ${runtime(process.uptime())}
+*┃☞* *ʀᴜɴᴛɪᴍᴇ* : ${runtime(process.uptime())}
 *┃♻️* *ᴍᴏᴅᴇ* : *${config.MODE}*
 *┃♻️* *ᴘʀᴇғɪx* : *${config.PREFIX}*
 *┃♻️* *ʀᴀᴍ ᴜsᴇ* : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
