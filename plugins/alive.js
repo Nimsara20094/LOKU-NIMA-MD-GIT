@@ -29,15 +29,15 @@ cmd({
         const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
 
         const formattedInfo = `
-♻️ *NIMA MD V1 STATUS* ♻️
-Hi 🫵🏽 ${pushname}
+*❮❮NIMA MD V1 STATUS❯❯*
+HELLO  ${pushname} 🤖
 🕒 *Time*: ${currentTime}
 📅 *Date*: ${currentDate}
-⏳ *Uptime*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
+🔄 *Uptime*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
 
 🤖 *Status*: *Nima is Alive and Ready!*
 
-🎉 *Enjoy the Service!*
+🎉 *Enjoy Nima-Md Diploy Service!*
         `.trim();
 
         // Send the video message with caption
