@@ -41,7 +41,7 @@ let madeMenu = `*╭══〘〘 ${config.BOT_NAME} 〙〙*
 *┃🤖* *ᴍᴏᴅᴇ* : *${config.MODE}*
 *┃🤖* *ᴘʀᴇғɪx* : *${config.PREFIX}*
 *┃🤖* *ʀᴀᴍ ᴜsᴇ* : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
-*┃🤖* *ɴᴀᴍᴇ ʙᴏᴛ* : *❖『𝗡𝗜𝗠𝗔-𝗠𝗗 𝗩1』❖*
+*┃🤖* *ɴᴀᴍᴇ ʙᴏᴛ* : *❖『🤖𝗡𝗜𝗠𝗔-𝗠𝗗 𝗩1🤖』❖*
 *┃🤖* *ᴄʀᴇᴀᴛᴏʀ* : *RTD NIMAH*
 *┃🤖* *ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ* : *${config.ALWAYS_ONLINE}*
 *┃🤖* *ᴠᴇʀsɪᴏɴs* : *4.2.1*
