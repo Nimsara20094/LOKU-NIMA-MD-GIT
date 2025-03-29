@@ -21,7 +21,7 @@ cmd({
 
     pattern: "menu",
 
-    react: "📑",
+    react: "🤖",
 
     desc: "Get bot command list.",
 
