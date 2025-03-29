@@ -12,6 +12,8 @@ const { cmd } = require("../command"); const yts = require("yt-search"); const a
 
 cmd({ pattern: "play", react: '🎵', desc: "Download audio from YouTube by searching for keywords (using API 2).", category: "music", use: ".play1 <song name or keywords>", filename: __filename }, async (conn, mek, msg, { from, args, reply }) => { try { const searchQuery = args.join(" "); if (!searchQuery) { return reply("Please provide a song name or keywords to search for."); }
 
+reply("♻️NIMA MD SEARCHING FOR SONG♻️🔍\n");
+
 const searchResults = await yts(searchQuery); if (!searchResults.videos || searchResults.videos.length === 0) { return reply(❌ No results found for "${searchQuery}".); }
 
 const firstResult = searchResults.videos[0]; const videoUrl = firstResult.url;
@@ -30,13 +32,13 @@ reply(✅ *${title}* has been downloaded successfully!);
 
 cmd({ pattern: "song", react: '🎵', desc: "Download audio from YouTube by searching for keywords (using API 2).", category: "music", use: ".play1 <song name or keywords>", filename: __filename }, async (conn, mek, msg, { from, args, reply }) => { try { const searchQuery = args.join(" "); if (!searchQuery) { return reply("Please provide a song name or keywords to search for."); }
 
+reply("♻️NIMA MD SEARCHING FOR SONG♻️🔍\n");
+
 const searchResults = await yts(searchQuery); if (!searchResults.videos || searchResults.videos.length === 0) { return reply(❌ No results found for "${searchQuery}".); }
 
 const firstResult = searchResults.videos[0]; const videoUrl = firstResult.url;
 
-let songDetails = `🎵 Song Found!
-
-+📌 Title: ${firstResult.title} +⏳ Duration: ${firstResult.timestamp} +👁 Views: ${firstResult.views} +🎤 Author: ${firstResult.author.name} `;
+let songDetails = 🎵 *Song Found!*\n\n + 📌 *Title:* ${firstResult.title}\n + ⏳ *Duration:* ${firstResult.timestamp}\n + 👁 *Views:* ${firstResult.views}\n + 🎤 *Author:* ${firstResult.author.name}\n\n + 📥 Downloading song, please wait...;
 
 await reply(songDetails);
 
@@ -44,7 +46,7 @@ await reply(songDetails);
 
 const { title, download_url, thumbnail } = response.data.result;
 
-// Send song image await conn.sendMessage(from, { image: { url: thumbnail }, caption: songDetails }, { quoted: mek });
+// Send song details with image await conn.sendMessage(from, { image: { url: thumbnail }, caption: songDetails }, { quoted: mek });
 
 // Send the audio file await conn.sendMessage(from, { audio: { url: download_url }, mimetype: 'audio/mp4', ptt: false }, { quoted: mek });
 
