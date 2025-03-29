@@ -37,16 +37,16 @@ async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, send
 
 try{
 let madeMenu = `*╭══〘〘 ${config.BOT_NAME} 〙〙*
-*┃🤖* *ʀᴜɴᴛɪᴍᴇ* : ${runtime(process.uptime())}
-*┃🤖* *ᴍᴏᴅᴇ* : *${config.MODE}*
-*┃🤖* *ᴘʀᴇғɪx* : *${config.PREFIX}*
-*┃🤖* *ʀᴀᴍ ᴜsᴇ* : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
-*┃🤖* *ɴᴀᴍᴇ ʙᴏᴛ* : *❖『𝗡𝗜𝗠𝗔-𝗠𝗗 𝗩1』❖*
-*┃🤖* *ᴄʀᴇᴀᴛᴏʀ* : *LOKU NIMAH*
-*┃🤖* *ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ* : *${config.ALWAYS_ONLINE}*
-*┃🤖* *ᴠᴇʀsɪᴏɴs* : *4.2.1*
+*┃🔱* *ʀᴜɴᴛɪᴍᴇ* : ${runtime(process.uptime())}
+*┃🔱* *ᴍᴏᴅᴇ* : *${config.MODE}*
+*┃🔱* *ᴘʀᴇғɪx* : *${config.PREFIX}*
+*┃🔱* *ʀᴀᴍ ᴜsᴇ* : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
+*┃🔱* *ɴᴀᴍᴇ ʙᴏᴛ* : *❖『𝗡𝗜𝗠𝗔-𝗠𝗗 𝗩1』❖*
+*┃🔱* *ᴄʀᴇᴀᴛᴏʀ* : *LOKU NIMAH*
+*┃🔱* *ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ* : *${config.ALWAYS_ONLINE}*
+*┃🔱* *ᴠᴇʀsɪᴏɴs* : *4.2.1*
 *╰═════════════════⊷*
-  👉LOKU NIMA-MD👈
+  😈𝗕𝗬 𝗟𝗢𝗞𝗨 𝗡𝗜𝗠𝗔😈
  *♡︎•━━━━━━☻︎━━━━━━•♡︎*
 *╭────❒⁠⁠⁠⁠* *📥 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥-𝗡𝗜𝗠𝗔𝗛 📥* *❒⁠⁠⁠⁠* 
 *├❮❮* *.ғʙ*
