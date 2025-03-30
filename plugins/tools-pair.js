@@ -32,7 +32,7 @@ cmd({
     const _0x45d8b5 = await fetchJson("https://sessions12-86cb4755b42a.herokuapp.com/code?number=" + _0x11a944);
     const _0x5278db = _0x45d8b5.code;
     await _0x194381.reply('' + _0x5278db);
-    await _0x194381.reply("> *Use the above pairing code to get your session id for GMAX-MD.*");
+    await _0x194381.reply("> *Use the above pairing code to get your session id for Nima-Md.*");
   } catch (_0x176bc8) {
     console.error(_0x176bc8);
     _0x1bfaac("An error occurred: " + _0x176bc8.message);
@@ -65,7 +65,7 @@ cmd({
     const _0x509bbb = await fetchJson('https://gmax-mega-1.onrender.com/code?number=' + _0x21983e);
     const _0x141fd6 = _0x509bbb.code;
     await _0x1c0675.reply('' + _0x141fd6);
-    await _0x1c0675.reply("> *Use the above pairing code to get your session id for GMAX-MD.*");
+    await _0x1c0675.reply("> *Use the above pairing code to get your session id for Nima-Md.*");
   } catch (_0x4a59d9) {
     console.error(_0x4a59d9);
     _0x4f82db("An error occurred: " + _0x4a59d9.message);
