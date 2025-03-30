@@ -39,7 +39,7 @@ cmd({
 }) => {
   try {
     if (!q) return reply('Please provide text to generate QR code.');
-    await reply('> *Gmax Generating QR code...🧩*');
+    await reply('> *Nima Generating QR code...🧩*');
     const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(q)}&size=200x200`;
     const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
     const buffer = Buffer.from(response.data, 'binary');
