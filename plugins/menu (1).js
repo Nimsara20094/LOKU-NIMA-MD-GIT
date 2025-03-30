@@ -54,7 +54,7 @@ let madeMenu = `*╭══〘〘 ${config.BOT_NAME} 〙〙*
 *├❮❮* *.ᴠɪᴅᴇᴏ*
 *├❮❮* *.ɢᴅʀɪᴠᴇ*
 *├❮❮* *.ᴛᴡɪᴛᴛᴇʀ*
-*├❮❮*.ᴛᴛ*
+*├❮❮* *.ᴛᴛ*
 *├❮❮* *.ᴍᴇᴅɪᴀғɪʀᴇ*
 *├❮❮* *.ᴘʟᴀʏ*
 *├❮❮* *.sᴏɴɢ*
@@ -269,7 +269,7 @@ await conn.sendMessage(from,{image:{url:config.ALIVE_IMG},caption:madeMenu,
     forwardingScore: 999,
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363414256474114@newsletter',
+      newsletterJid: '126369414256474114@newsletter',
       newsletterName: '𝗡𝗜𝗜𝗠𝗔-𝗠𝗗 1𝗩',
       serverMessageId: 999
     }
