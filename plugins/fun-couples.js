@@ -33,7 +33,7 @@ cmd({
         'image': {
           'url': _0x355e74
         },
-        'caption': "👨 Male Couple Profile Picture"
+        'caption': "👨 Male Couple Profile Picture By Nima"
       }, {
         'quoted': _0xc5df33
       });
@@ -43,7 +43,7 @@ cmd({
         'image': {
           'url': _0x4470cd
         },
-        'caption': "👩 Female Couple Profile Picture"
+        'caption': "👩 Female Couple Profile Picture By Nima"
       }, {
         'quoted': _0xc5df33
       });
