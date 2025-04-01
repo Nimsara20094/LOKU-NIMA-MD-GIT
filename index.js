@@ -95,7 +95,7 @@ let up = ` ʙᴏᴛ⇨⇨ Connected Successfully!!!!!!* ✅
 
 *🖇️Subscribe My Youtube Channel✓💗*
 
- - : ᴜɴᴅᴇꜰɪɴᴇᴅ
+ - : https://m.youtube.com/@RTD_FAMILY
 
 > *POWERED BY LOKU NIMAH🤹‍♂️ ʙᴇᴛᴀ ꜱᴇʀᴠɪᴄᴇ*`;
 conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/zqoycp.jpg` }, caption: up })
