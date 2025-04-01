@@ -132,7 +132,7 @@ cmd({
                         delete activeGroups['interval'];
                     }
                 } else {
-                    await conn.sendMessage(from, { text: "🛑 24/7 News is not active in this group.\n\n> ©QUEEN-SADU-MD & D-XTRO-MD" });
+                    await conn.sendMessage(from, { text: "🛑 24/7 News is not active in this group.\n\n> ©NIMA-MD & DNS KING-MD" });
                 }
             } else {
                 await conn.sendMessage(from, { text: "🚫 This command can only be used by group admins or the bot owner." });
