@@ -89,9 +89,9 @@ let up = ` ʙᴏᴛ⇨⇨ Connected Successfully!!!!!!* ✅
 
 *🖇️Join My WhatsApp Channels✓💗* 
 
-- : ᴜɴᴅᴇꜰɪɴᴇᴅ
+- : https://whatsapp.com/channel/0029VazajdIIt5rrYdTBSc0P
 
-- : ᴜɴᴅᴇꜰɪɴᴇᴅ
+- : NIMA CONTACT NO:-+94769091078
 
 *🖇️Subscribe My Youtube Channel✓💗*
 
