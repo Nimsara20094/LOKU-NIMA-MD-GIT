@@ -38,7 +38,7 @@
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
-[![FORK NIMA MD-V4](https://img.shields.io/badge/FORK%20-KERM%20MD%20V1-white)](https://github.com/Kgtech-cmr/KERM-MD-V1/fork)
+[![FORK NIMA MD-V4](https://img.shields.io/badge/FORK%20-KERM%20MD%20V1-white)](https://github.com/Lokunima2001/LOKU-NIMA-MD-GIT/fork)
 
 ### <br>    ❖ SESSION_ID ❖
 
