@@ -53,7 +53,7 @@ async function checkAndPostNews(conn, groupId) {
 
         if (!lastNewsTitles[groupId].includes(newsItem.title)) {
            await conn.sendMessage(groupId, { 
-                text: `*🔵𝐍𝐄𝐖𝐒 𝐀𝐋𝐄𝐑𝐓!*\n██████████████████████████████████████████\n\n\n📰 *${newsItem.title}*\n${newsItem.content}\n\n${newsItem.date}\n\n> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ ᴅɪɴᴇꜱʜ ᴏꜰᴄ*\n> *QUEEN-SADU-MD & D-XTRO-MD*` 
+                text: `*🔵𝐍𝐄𝐖𝐒 𝐀𝐋𝐄𝐑𝐓!*\n██████████████████████████████████████████\n\n\n📰 *${newsItem.title}*\n${newsItem.content}\n\n${newsItem.date}\n\n> *©POWERED BY LOKU NIMAH*\n> *QUEEN-SADU-MD & D-XTRO-MD*` 
             });
             lastNewsTitles[groupId].push(newsItem.title);
 
@@ -82,7 +82,7 @@ cmd({
                 if (!activeGroups[from]) {
                     activeGroups[from] = true;
 
-                    await conn.sendMessage(from, { text: "🇱🇰 Auto 24/7 News Activated.\n\n> QUEEN-SADU-MD & D-XTRO-MD" });
+                    await conn.sendMessage(from, { text: "🇱🇰 Auto 24/7 News Activated.\n\n> NIMA-MD" });
 
                     if (!activeGroups['interval']) {
                         activeGroups['interval'] = setInterval(async () => {
