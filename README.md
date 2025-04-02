@@ -33,7 +33,8 @@
 </p>
 
 -----------
-<div align="center"><br> <img src="https://profile-counter.glitch.me/KERM-MD-V1/count.svg" /><br>NIMAH-MD-V1</div>
+<div align="center"><br> <img src="https://profile-counter.glitch.me/KERM-MD-V1/count.svg" <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=+•★⃝ NIMA+MD-+V1 ★⃝•" alt="Typing SVG" /></a>
+
 
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=+•★⃝ NIMA+MD-+V1 ★⃝•" alt="Typing SVG" /></a>
 
