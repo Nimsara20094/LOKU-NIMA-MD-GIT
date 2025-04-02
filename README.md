@@ -13,6 +13,8 @@
 
 -------
 
+<img src="https://readme-typing-svg.demolab.com?font=Jersey+20+Charted&size=30&pause=1000&color=F71515&width=435&lines=BOT+100%25+WORKING+POWERED+BY+NIMA" alt="Typing SVG" /></a>   
+
  <p align="center">
   <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=00008B&center=true&vCenter=true&multiline=false&lines=`NIMA+-+MD+-+V1+WHATSAPP+BOT`" alt="">
 
