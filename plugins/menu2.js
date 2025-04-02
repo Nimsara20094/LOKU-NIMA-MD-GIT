@@ -1,8 +1,4 @@
-/*created by Kgtech 🕵
-contact dev1 237656520674 ♻️
-contact dev2 237650564445 ♻️
-© Copy coder alert ⚠
-*/
+/*`𝐒𝐓𝐀𝐓𝐔𝐒 𝐊𝐈𝐍𝐆 𝐋𝐎𝐊𝐔 𝐍𝐈𝐌𝐀𝐇`*/
 
 
 
