@@ -1,44 +1,28 @@
-/*
-_  ______   _____ _____ _____ _   _
-| |/ / ___| |_   _| ____/___ | | | |
-| ' / |  _    | | |  _|| |   | |_| |
-| . \ |_| |   | | | |__| |___|  _  |
-|_|\_\____|   |_| |_____\____|_| |_|
-
-ANYWAY, YOU MUST GIVE CREDIT TO MY CODE WHEN COPY IT
-CONTACT ME HERE +237656520674
-YT: KermHackTools
-Github: Kgtech-cmr
-*/
-
 const axios = require('axios');
 const { cmd } = require('../command');
-const config = require('../config'); // Ensure your API key is in config
+const config = require('../config');
 
-// Command to fetch movie details
 cmd({
     pattern: "movieinfo",
     desc: "Fetch detailed information about a movie.",
     category: "utility",
     react: "🎞️",
     filename: __filename
-}, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+}, async (conn, mek, m, { from, args, reply }) => {
     try {
         const movieName = args.join(' ');
-        if (!movieName) {
-            return reply("📽️ Please provide the name of the movie.");
-        }
+        if (!movieName) return reply("📽️ Please provide the name of the movie.");
+
+        if (!config.OMDB_API_KEY) return reply("❌ OMDB API key not configured.");
 
         const apiUrl = `http://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${config.OMDB_API_KEY}`;
         const response = await axios.get(apiUrl);
         const data = response.data;
 
-        if (data.Response === "False") {
-            return reply("! Movie not found.");
-        }
+        if (!response || data.Response === "False") return reply("❌ Movie not found.");
 
         const movieInfo = `
-*🎬NIMA-MD-V1 MOVIE SERCH🎬*
+*🎬 NIMA-MD-V1 MOVIE SEARCH 🎬*
 
 *ᴛɪᴛʟᴇ:* ${data.Title}
 *ʏᴇᴀʀ:* ${data.Year}
@@ -53,11 +37,12 @@ cmd({
 *ᴄᴏᴜɴᴛʀʏ:* ${data.Country}
 *ᴀᴡᴀʀᴅꜱ:* ${data.Awards}
 *ɪᴍᴅʙ ʀᴀᴛɪɴɢ:* ${data.imdbRating}
+*ᴘʟᴏᴛ:* ${data.Plot}
 
 > POWERED BY LOKU NIMA 1V
 `;
 
-        const imageUrl = data.Poster && data.Poster !== 'N/A' ? data.Poster : config.ALIVE_IMG;
+        const imageUrl = (data.Poster && data.Poster !== 'N/A') ? data.Poster : config.ALIVE_IMG || 'https://i.imgur.com/placeholder.png';
 
         await conn.sendMessage(from, {
             image: { url: imageUrl },
