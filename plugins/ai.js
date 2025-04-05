@@ -1,15 +1,4 @@
-/*
-_  ______   _____ _____ _____ _   _
-| |/ / ___| |_   _| ____/___ | | | |
-| ' / |  _    | | |  _|| |   | |_| |
-| . \ |_| |   | | | |__| |___|  _  |
-|_|\_\____|   |_| |_____\____|_| |_|
-
-ANYWAY, YOU MUST GIVE CREDIT TO MY CODE WHEN COPY IT
-CONTACT ME HERE +237656520674
-YT: KermHackTools
-Github: Kgtech-cmr
-*/
+/*𝐒𝐓𝐀𝐓𝐔𝐒 𝐊𝐈𝐍𝐆 𝐋𝐎𝐊𝐔 𝐍𝐈𝐌𝐀𝐇*/
 
 const axios = require("axios");
 const { cmd } = require("../command");
@@ -73,8 +62,8 @@ cmd({
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363321386877609@newsletter',
-                    newsletterName: '𝐊𝐄𝐑𝐌 𝐀𝐈',
+                    newsletterJid: '120363357955960414@newsletter',
+                    newsletterName: '𝐍𝐈𝐌𝐀-𝐌𝐃 𝐀𝐈',
                     serverMessageId: 143
                 }
             }
@@ -148,8 +137,8 @@ cmd({
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363321386877609@newsletter',
-                    newsletterName: '𝐊𝐄𝐑𝐌 𝐀𝐈',
+                    newsletterJid: '120363357955960414@newsletter',
+                    newsletterName: '𝐍𝐈𝐌𝐀-𝐌𝐃 𝐀𝐈',
                     serverMessageId: 143
                 }
             }
