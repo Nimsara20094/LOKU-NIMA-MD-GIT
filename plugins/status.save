@@ -1,0 +1,52 @@
+/*𝐒𝐓𝐀𝐓𝐔𝐒 𝐊𝐈𝐍𝐆 𝐋𝐎𝐊𝐔 𝐍𝐈𝐌𝐀𝐇*/
+
+const { cmd } = require("../command");
+const fs = require("fs");
+
+let statusData = {};  // A simple object to store the statuses
+
+cmd({
+    pattern: "statussave",
+    alias: "setstatus",
+    desc: "Save a custom status.",
+    category: "user",
+    react: "💬",
+    use: "<status message>",
+    filename: __filename,
+}, async (conn, mek, m, { from, args, q, reply }) => {
+    try {
+        if (!q) return reply("⚠️ Please provide a status message.\n\nExample:\n.statussave Working on my project!");
+
+        // Saving status message to the object
+        statusData[from] = q;
+
+        // Optionally save the status to a file (JSON format)
+        fs.writeFileSync('./statusData.json', JSON.stringify(statusData, null, 2));
+
+        return reply(`✅ Your status has been saved!\n\n*Status:* ${q}`);
+
+    } catch (error) {
+        console.error("Error in saving status:", error);
+        return reply("❌ An error occurred while saving your status. Please try again later.");
+    }
+});
+
+// Optionally, you can add another command to retrieve the saved status
+cmd({
+    pattern: "getstatus",
+    alias: "status",
+    desc: "Retrieve your saved status.",
+    category: "user",
+    react: "💬",
+    use: "View saved status",
+    filename: __filename,
+}, async (conn, mek, m, { from, reply }) => {
+    try {
+        const savedStatus = statusData[from] || "You don't have a saved status yet.";
+        return reply(`🔹 Your saved status is:\n*${savedStatus}*`);
+
+    } catch (error) {
+        console.error("Error in retrieving status:", error);
+        return reply("❌ An error occurred while fetching your status. Please try again later.");
+    }
+});
