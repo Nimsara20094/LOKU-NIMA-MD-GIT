@@ -1,52 +1,44 @@
-/*𝐒𝐓𝐀𝐓𝐔𝐒 𝐊𝐈𝐍𝐆 𝐋𝐎𝐊𝐔 𝐍𝐈𝐌𝐀𝐇*/
+const { cmd } = require('../command');
+const config = require('../config');
 
-const { cmd } = require("../command");
-const fs = require("fs");
-
-let statusData = {};  // A simple object to store the statuses
+// Mots clés déclencheurs
+const triggerWords = ["send", "envoie", "envoi", "abeg"];
 
 cmd({
-    pattern: "statussave",
-    alias: "setstatus",
-    desc: "Save a custom status.",
-    category: "user",
-    react: "💬",
-    use: "<status message>",
-    filename: __filename,
-}, async (conn, mek, m, { from, args, q, reply }) => {
+    pattern: "statusAuto",
+    react: "📤",
+    desc: "Répond automatiquement à une demande de statut.",
+    category: "main",
+    use: ".statusAuto",
+    filename: __filename
+}, async (conn, mek, m, { from, body, quoted, sender, reply }) => {
     try {
-        if (!q) return reply("⚠️ Please provide a status message.\n\nExample:\n.statussave Working on my project!");
+        // Vérification si le message contient un mot clé
+        if (triggerWords.some(word => body.toLowerCase().includes(word))) {
+            // Vérifier si c'est une réponse à un statut (viewOnceMessage)
+            if (quoted && quoted.message && quoted.message.viewOnceMessage) {
+                const viewOnce = quoted.message.viewOnceMessage;
 
-        // Saving status message to the object
-        statusData[from] = q;
-
-        // Optionally save the status to a file (JSON format)
-        fs.writeFileSync('./statusData.json', JSON.stringify(statusData, null, 2));
-
-        return reply(`✅ Your status has been saved!\n\n*Status:* ${q}`);
-
-    } catch (error) {
-        console.error("Error in saving status:", error);
-        return reply("❌ An error occurred while saving your status. Please try again later.");
-    }
-});
-
-// Optionally, you can add another command to retrieve the saved status
-cmd({
-    pattern: "getstatus",
-    alias: "status",
-    desc: "Retrieve your saved status.",
-    category: "user",
-    react: "💬",
-    use: "View saved status",
-    filename: __filename,
-}, async (conn, mek, m, { from, reply }) => {
-    try {
-        const savedStatus = statusData[from] || "You don't have a saved status yet.";
-        return reply(`🔹 Your saved status is:\n*${savedStatus}*`);
-
-    } catch (error) {
-        console.error("Error in retrieving status:", error);
-        return reply("❌ An error occurred while fetching your status. Please try again later.");
+                // Envoi du statut image ou vidéo
+                if (viewOnce.message && viewOnce.message.imageMessage) {
+                    await conn.sendMessage(sender, {
+                        image: viewOnce.message.imageMessage,
+                        caption: "📸 Voici le statut demandé."
+                    });
+                } else if (viewOnce.message && viewOnce.message.videoMessage) {
+                    await conn.sendMessage(sender, {
+                        video: viewOnce.message.videoMessage,
+                        caption: "🎥 Voici le statut demandé."
+                    });
+                } else {
+                    reply("❌ Le statut n'est ni une image ni une vidéo.");
+                }
+            } else {
+                reply("❌ Pour recevoir le statut, réponds directement à celui-ci avec un mot clé.");
+            }
+        }
+    } catch (e) {
+        console.error("Erreur lors de l'envoi du statut :", e);
+        reply("❌ Une erreur est survenue lors de l'envoi du statut.");
     }
 });
