@@ -67,7 +67,7 @@ cmd({
         }
 
         // Image and message formatting
-        const ALIVE_IMG = 'https://i.imgur.com/R4ebueM.jpeg';
+        const ALIVE_IMG = 'https://files.catbox.moe/8r95u5.jpg';
         const formattedInfo = `🤖 *ChatGPT Response:*\n\n${gptResponse}`;
 
         // Send image + response
