@@ -1,91 +1,52 @@
-const { cmd } = require('../command');
-const fs = require('fs');
+/*𝐒𝐓𝐀𝐓𝐔𝐒 𝐊𝐈𝐍𝐆 𝐋𝐎𝐊𝐔 𝐍𝐈𝐌𝐀𝐇*/
 
-// Path to save the status message
-const statusFilePath = './savedStatus.json';
+const { cmd } = require("../command");
+const fs = require("fs");
 
-// Load saved status if it exists
-let savedStatus = {};
-
-if (fs.existsSync(statusFilePath)) {
-    savedStatus = JSON.parse(fs.readFileSync(statusFilePath));
-}
-
-// Store interval IDs for multiple auto-send jobs
-let sendInterval;
+let statusData = {};  // A simple object to store the statuses
 
 cmd({
-    pattern: "save",
-    react: "💾",
-    desc: "Save the current status message.",
-    category: "utility",
-    use: '.save',
-    filename: __filename
-}, async (conn, mek, m, { from, reply, isGroup, quoted }) => {
-    // Ensure the user replies to a message to save it
-    if (!quoted) return reply("❌ Please reply to a message to save as status.");
+    pattern: "statussave",
+    alias: "setstatus",
+    desc: "Save a custom status.",
+    category: "user",
+    react: "💬",
+    use: "<status message>",
+    filename: __filename,
+}, async (conn, mek, m, { from, args, q, reply }) => {
+    try {
+        if (!q) return reply("⚠️ Please provide a status message.\n\nExample:\n.statussave Working on my project!");
 
-    // Save the status message
-    const statusMessage = quoted.body;
-    
-    // Save to file
-    savedStatus = { message: statusMessage };
-    fs.writeFileSync(statusFilePath, JSON.stringify(savedStatus, null, 2));
+        // Saving status message to the object
+        statusData[from] = q;
 
-    // Send confirmation
-    reply(`✅ Status message saved: "${statusMessage}"`);
+        // Optionally save the status to a file (JSON format)
+        fs.writeFileSync('./statusData.json', JSON.stringify(statusData, null, 2));
+
+        return reply(`✅ Your status has been saved!\n\n*Status:* ${q}`);
+
+    } catch (error) {
+        console.error("Error in saving status:", error);
+        return reply("❌ An error occurred while saving your status. Please try again later.");
+    }
 });
 
+// Optionally, you can add another command to retrieve the saved status
 cmd({
-    pattern: "autosendstatus",
-    react: "⏰",
-    desc: "Auto-send saved status at regular intervals.",
-    category: "utility",
-    use: '.autosendstatus <interval in minutes>',
-    filename: __filename
-}, async (conn, mek, m, { from, args, isMe, reply }) => {
-    // Ensure only the bot owner can use this command
-    if (!isMe) return reply("❌ You don't have permission to use this command.");
+    pattern: "getstatus",
+    alias: "status",
+    desc: "Retrieve your saved status.",
+    category: "user",
+    react: "💬",
+    use: "View saved status",
+    filename: __filename,
+}, async (conn, mek, m, { from, reply }) => {
+    try {
+        const savedStatus = statusData[from] || "You don't have a saved status yet.";
+        return reply(`🔹 Your saved status is:\n*${savedStatus}*`);
 
-    const intervalMinutes = parseInt(args[0]); // Interval in minutes
-
-    if (!intervalMinutes) return reply("❌ Please specify an interval in minutes.");
-
-    if (!savedStatus.message) return reply("❌ No status message saved yet. Please save a status first.");
-
-    // Clear any previous intervals
-    if (sendInterval) clearInterval(sendInterval);
-
-    // Set up the new auto-send interval
-    sendInterval = setInterval(async () => {
-        try {
-            await conn.sendMessage(from, { text: savedStatus.message });
-            console.log(`Auto-sent status: "${savedStatus.message}" to ${from}`);
-        } catch (e) {
-            console.error('Failed to send auto message:', e);
-        }
-    }, intervalMinutes * 60 * 1000); // Convert minutes to milliseconds
-
-    reply(`✅ Auto-send set! I will send the saved status every ${intervalMinutes} minute(s).`);
-});
-
-// Command to stop the auto-send status
-cmd({
-    pattern: "stopautosendstatus",
-    react: "🛑",
-    desc: "Stop auto-sending the saved status.",
-    category: "utility",
-    use: '.stopautosendstatus',
-    filename: __filename
-}, async (conn, mek, m, { from, isMe, reply }) => {
-    if (!isMe) return reply("❌ You don't have permission to use this command.");
-
-    // Clear the interval to stop auto-sending
-    if (sendInterval) {
-        clearInterval(sendInterval);
-        sendInterval = null;
-        reply("✅ Auto-send stopped.");
-    } else {
-        reply("❌ No auto-send is currently active.");
+    } catch (error) {
+        console.error("Error in retrieving status:", error);
+        return reply("❌ An error occurred while fetching your status. Please try again later.");
     }
 });
