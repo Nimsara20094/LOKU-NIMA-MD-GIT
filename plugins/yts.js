@@ -1,52 +1,53 @@
-/*
-_  ______   _____ _____ _____ _   _
-| |/ / ___| |_   _| ____/___ | | | |
-| ' / |  _    | | |  _|| |   | |_| |
-| . \ |_| |   | | | |__| |___|  _  |
-|_|\_\____|   |_| |_____\____|_| |_|
+NIMSARA updated version:
 
-ANYWAY, YOU MUST GIVE CREDIT TO MY CODE WHEN COPY IT
-CONTACT ME HERE +237656520674
-YT: KermHackTools
-Github: Kgtech-cmr
+N   N III M   M SSS  AAAAA RRRR   AAAAA
+NN  N  I  MM MM S    A   A R   R  A   A
+N N N  I  M M M SSS  AAAAA RRRR   AAAAA
+N  NN  I  M   M   S  A   A R  R   A   A
+N   N III M   M SSS  A   A R   R  A   A
+
+CODE BY: Nimsara (Telegram: @NimsaraDev | GitHub: github.com/NimsaraDev)
+
+PLEASE GIVE PROPER CREDIT IF YOU USE OR MODIFY THIS CODE.
 */
 
-const config = require('../config')
-const l = console.log
-const { cmd, commands } = require('../command')
-const dl = require('@bochilteam/scraper')  
-const ytdl = require('yt-search');
-const fs = require('fs-extra')
-var videotime = 60000 // 1000 min
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson} = require('../lib/functions')
+const { cmd } = require('../command');
+const yts = require('yt-search');
+
 cmd({
-    pattern: "yts",
-    alias: ["ytsearch"],
-    use: '.yts sameer kutti',
-    react: "🔎",
-    desc: "Search and get details from youtube.",
-    category: "search",
-    filename: __filename
+  pattern: "yts",
+  alias: ["ytsearch"],
+  use: ".yts <keywords>",
+  react: "🔎",
+  desc: "Search and show YouTube video results.",
+  category: "search",
+  filename: __filename
+}, async (conn, mek, m, {
+  from,
+  q, // search query
+  reply
+}) => {
+  try {
+    if (!q) return reply("*Please provide search keywords.*");
 
-},
+    const searchResults = await yts(q);
+    const videos = searchResults.videos;
 
-async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-if (!q) return reply('*Please give me words to search*')
-try {
-let yts = require("yt-search")
-var arama = await yts(q);
-} catch(e) {
-    l(e)
-return await conn.sendMessage(from , { text: '*Error !!*' }, { quoted: mek } )
-}
-var mesaj = '';
-arama.all.map((video) => {
-mesaj += ' *🖲️' + video.title + '*\n🔗 ' + video.url + '\n\n'
-});
-await conn.sendMessage(from , { text:  mesaj }, { quoted: mek } )
-} catch (e) {
-    l(e)
-  reply('*Error !!*')
-}
+    if (!videos.length) return reply("*No results found.*");
+
+    let text = `🔎 *Search Results for:* ${q}\n\n`;
+
+    videos.slice(0, 6).forEach((video, i) => {
+      text += `${i + 1}. *${video.title}*\n`;
+      text += `📺 Channel: ${video.author.name}\n`;
+      text += `⏱ Duration: ${video.timestamp} | 👁 ${video.views} views\n`;
+      text += `🔗 Link: ${video.url}\n\n`;
+    });
+
+    await conn.sendMessage(from, { text }, { quoted: mek });
+
+  } catch (e) {
+    console.error("YTS Search Error:", e);
+    reply("*❌ An error occurred. Please try again later.*");
+  }
 });
