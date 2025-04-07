@@ -13,7 +13,7 @@ cmd({
     filename: __filename,
 }, async (conn, mek, m, { from, args, q, reply }) => {
     try {
-        // Check for user input
+        // Check if user gave a query
         if (!q) return reply("⚠️ Please provide a query for ChatGPT.\n\nExample:\n.gpt What is AI?");
 
         const text = q;
@@ -21,38 +21,50 @@ cmd({
         const url = `https://api.dreaded.site/api/chatgpt?text=${encodedText}`;
 
         console.log('Requesting URL:', url);
+        await conn.sendPresenceUpdate('composing', from); // typing indicator
 
-        // Call API with headers and timeout
+        // API call
         const response = await axios.get(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0',
                 'Accept': 'application/json',
             },
-            timeout: 10000 // 10 seconds
+            timeout: 10000
         });
 
-        console.log('Full API Response:', response.data);
+        console.log("API RAW Response:", JSON.stringify(response.data, null, 2));
 
-        // Parse response
-        const gptResponse = response.data.result?.prompt 
-            || response.data.result 
-            || response.data.response 
-            || response.data.answer 
-            || "⚠️ Couldn't parse a valid response from the API.";
+        // Safer response parsing
+        let gptResponse = "";
 
+        if (typeof response.data === "string") {
+            gptResponse = response.data;
+        } else if (typeof response.data.result === "string") {
+            gptResponse = response.data.result;
+        } else if (typeof response.data.result?.prompt === "string") {
+            gptResponse = response.data.result.prompt;
+        } else {
+            gptResponse = response.data.result?.response ||
+                          response.data.response ||
+                          response.data.answer ||
+                          response.data.message ||
+                          JSON.stringify(response.data);
+        }
+
+        // If still empty
         if (!gptResponse || gptResponse.length < 1) {
             return reply("❌ The API returned an empty response. Try again later.");
         }
 
-        // Image to attach
-        const ALIVE_IMG = 'https://i.imgur.com/R4ebueM.jpeg'; // Use your own image URL if needed
+        // Image and message formatting
+        const ALIVE_IMG = 'https://i.imgur.com/R4ebueM.jpeg';
         const formattedInfo = `🤖 *ChatGPT Response:*\n\n${gptResponse}`;
 
-        // Send message with image
+        // Send image + response
         await conn.sendMessage(from, {
             image: { url: ALIVE_IMG },
             caption: formattedInfo,
-            contextInfo: { 
+            contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
@@ -67,10 +79,10 @@ cmd({
     } catch (error) {
         console.error("Error in GPT command:", error);
 
-        const errorDetails = error.response?.data?.message 
-            || error.response?.data 
-            || error.message 
-            || "Unknown error";
+        const errorDetails = error.response?.data?.message
+            || error.response?.data
+            || error.message
+            || "Unknown error occurred.";
 
         const errorMessage = `
 ❌ An error occurred while processing the GPT command.
