@@ -34,6 +34,11 @@ cmd({
 
         console.log("API RAW Response:", JSON.stringify(response.data, null, 2));
 
+        // Handle empty response from API
+        if (response.data.success && !response.data.result) {
+            return reply("❌ No response was generated. Please try a different query or try again later.");
+        }
+
         // Improved Response Parsing with Fallback
         let gptResponse = "";
 
