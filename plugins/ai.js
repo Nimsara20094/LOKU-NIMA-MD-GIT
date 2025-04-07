@@ -34,30 +34,40 @@ cmd({
 
         console.log("API RAW Response:", JSON.stringify(response.data, null, 2));
 
-        // Safer response parsing
+        // Improved Response Parsing with Fallback
         let gptResponse = "";
 
-        if (typeof response.data === "string") {
-            gptResponse = response.data;
-        } else if (typeof response.data.result === "string") {
-            gptResponse = response.data.result;
-        } else if (typeof response.data.result?.prompt === "string") {
-            gptResponse = response.data.result.prompt;
-        } else {
-            gptResponse = response.data.result?.response ||
-                          response.data.response ||
-                          response.data.answer ||
-                          response.data.message ||
-                          JSON.stringify(response.data);
+        if (response.data) {
+            if (typeof response.data === "string") {
+                gptResponse = response.data; // direct string response
+            } else if (response.data.result && typeof response.data.result === "string") {
+                gptResponse = response.data.result; // response inside 'result'
+            } else if (response.data.result && response.data.result.prompt) {
+                gptResponse = response.data.result.prompt; // specific field in result
+            } else if (response.data.response) {
+                gptResponse = response.data.response; // 'response' field
+            } else if (response.data.answer) {
+                gptResponse = response.data.answer; // 'answer' field
+            } else if (response.data.message) {
+                gptResponse = response.data.message; // 'message' field
+            }
         }
 
-        // If still empty
-        if (!gptResponse || gptResponse.length < 1) {
-            return reply("❌ The API returned an empty response. Try again later.");
+        // If no response found, fallback to the whole object stringify
+        if (!gptResponse || gptResponse.trim().length < 1) {
+            console.log("Fallback: No valid response, returning JSON stringify...");
+            gptResponse = JSON.stringify(response.data, null, 2);
+        }
+
+        console.log("Final GPT Response:", gptResponse);
+
+        // If still empty, send error message
+        if (!gptResponse || gptResponse.trim().length < 1) {
+            return reply("❌ Could not get a valid response from the API. Try again later or use a different query.");
         }
 
         // Image and message formatting
-        const ALIVE_IMG = 'https://i.imgur.com/R4ebueM.jpeg';
+        const ALIVE_IMG = 'https://files.catbox.moe/8r95u5.jpg';
         const formattedInfo = `🤖 *ChatGPT Response:*\n\n${gptResponse}`;
 
         // Send image + response
