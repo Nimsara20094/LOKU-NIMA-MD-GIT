@@ -10,7 +10,7 @@ const yts = require("yt-search");
 const axios = require("axios");
 cmd({
   'pattern': 'video3',
-  'alias': ["ytvid3", 'ytv3', 'ytvideo3','song'],
+  'alias': ["ytvid3", 'ytv3', 'ytvideo3','song3'],
   'react': '🔄',
   'desc': "Download videos from YouTube by searching for keywords.",
   'category': "video",
