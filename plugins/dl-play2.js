@@ -14,7 +14,7 @@ const yts = require("yt-search");
 const axios = require("axios");
 cmd({
   'pattern': "video2",
-  'alias': ["ytvid2", "ytv2", "ytvideo2", "song2"],
+  'alias': ["ytvid2", "ytv2", "ytvideo2"],
   'react': '⏳',
   'desc': "Download videos from YouTube by searching for keywords.",
   'category': "video",
@@ -30,7 +30,7 @@ cmd({
     if (!_0x32deeb) {
       return _0x290209("*Please provide a video tital or url*");
     }
-    _0x290209("> © NIMA MD 🔄...");
+    _0x290209("> © NIMA MD BY LOKU NIMA 🔄");
     const _0x5e6ce9 = await yts(_0x32deeb);
     if (!_0x5e6ce9.videos || _0x5e6ce9.videos.length === 0x0) {
       return _0x290209("❌ No results found for \"" + _0x32deeb + "\".");
@@ -76,7 +76,7 @@ cmd({
     if (!_0x356223) {
       return _0x377273("*Please provide a audio title or url*");
     }
-    _0x377273(">© NIMA MD 🔄...");
+    _0x377273(">© NIMA MD BY LOKU NIMA 🔄");
     const _0x271698 = await yts(_0x356223);
     if (!_0x271698.videos || _0x271698.videos.length === 0x0) {
       return _0x377273("❌ No results found for \"" + _0x356223 + "\".");
