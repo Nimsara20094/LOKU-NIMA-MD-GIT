@@ -1,50 +1,86 @@
-const apikey = 'enter you api key signup or login' // https://api-dark-shan-yt.koyeb.app/signup
+/*
+ʏᴏᴜᴛᴜʙᴇ ᴍᴘ3 ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴘʟᴜɢɪɴ
+ᴄʀᴇᴀᴛᴇᴅ ʙʏ : ᴅᴇɴᴇᴛʜᴅᴇᴠ®
+ᴘʟᴇᴀꜱᴇ ᴅᴏɴᴛ ʀᴇᴍᴏᴠᴇ ᴏᴡɴᴇʀ ᴄʀᴇᴅɪᴛꜱ 😁
+*/
+
+const { cmd, commands } = require('../command');
+const yts = require('yt-search');
+const ddownr = require('denethdev-ytmp3'); // Importing the denethdev-ytmp3 package for downloading
+
 cmd({
-    pattern: "ytmp3",
-    alias: ["mp3"],
-    use: ".ytmp3 <YouTube URL>",
-    react: "🎶",
-    desc: "Download YouTube audio in MP3 format",
-    category: "download",
-    filename: __filename
-},
-    async (conn, m, mek, { from, q, reply, prefix, tr }) => {
-        try {
-            if (!q) return await reply("*Please provide a valid YouTube URL!*");
+  pattern: "song",
+  desc: "Download songs.",
+  category: "download",
+  react: '🎧',
+  filename: __filename
+}, async (messageHandler, context, quotedMessage, { from, reply, q }) => {
+  try {
+    if (!q) return reply("*Please Provide A Song Name or Url 🙄*");
+    
+    // Search for the song using yt-search
+    const searchResults = await yts(q);
+    if (!searchResults || searchResults.videos.length === 0) {
+      return reply("*No Song Found Matching Your Query 🧐*");
+    }
 
-            const apiUrl = `https://api-dark-shan-yt.koyeb.app/download/ytmp3?url=${encodeURIComponent(q)}&apikey=${apikey}`;
-            const response = await fetch(apiUrl);
-            const data = await response.json();
+    const songData = searchResults.videos[0];
+    const songUrl = songData.url;
 
-            if (!data.status || !data.data?.result) {
-                return await reply("*Failed to fetch the audio. Please try again!*");
-            }
+    // Using denethdev-ytmp3 to fetch the download link
+    const result = await ddownr.download(songUrl, 'mp3'); // Download in mp3 format
+    const downloadLink = result.downloadUrl; // Get the download URL
 
-            const { title, uploader, duration, quality, format, thumbnail, download } = data.data.result;
+    let songDetailsMessage = `*ＹＯＵＴＵＢＥ ＡＵＤＩＯ ＤＬ*\n\n`;
+    songDetailsMessage += `*⚜ Title:* ${songData.title}\n`;
+    songDetailsMessage += `*👀 Views:* ${songData.views}\n`;
+    songDetailsMessage += `*⏰ Duration:* ${songData.timestamp}\n`;
+    songDetailsMessage += `*📆 Uploaded:* ${songData.ago}\n`;
+    songDetailsMessage += `*📽 Channel:* ${songData.author.name}\n`;
+    songDetailsMessage += `*🖇 URL:* ${songData.url}\n\n`;
+    songDetailsMessage += `*Choose Your Download Format:*\n\n`;
+    songDetailsMessage += `1 || Audio File 🎶\n`;
+    songDetailsMessage += `2 || Document File 📂\n\n`;
+    songDetailsMessage += `> NIMAH MD  BY LOKU NIMA®`;
 
-            const caption = `*🎶 YouTube MP3 Downloader 🎶*\n\n`
-                + `> 📃 *Title:* ${title}\n`
-                + `> 🎤 *Uploader:* ${uploader}\n`
-                + `> ⌚ *Duration:* ${duration}\n`
-                + `> 🎧 *Quality:* ${quality}kbps\n`
-                + `> 🔉 *Format* ${format}\n\n`
-                + `_Powered by Nima Md_`;
+    // Send the video thumbnail with song details
+    const sentMessage = await messageHandler.sendMessage(from, {
+      image: { url: songData.thumbnail },
+      caption: songDetailsMessage,
+    }, { quoted: quotedMessage });
 
-            // Send song details with image
-            await conn.sendMessage(from, {
-                image: { url: thumbnail },
-                caption: caption
-            }, { quoted: mek });
+    // Listen for the user's reply to select the download format
+    messageHandler.ev.on("messages.upsert", async (update) => {
+      const message = update.messages[0];
+      if (!message.message || !message.message.extendedTextMessage) return;
 
-            // Send the audio file
-            await conn.sendMessage(from, {
-                audio: { url: download },
-                mimetype: "audio/mpeg",
-                fileName: `${title}.mp3`
-            }, { quoted: mek });
+      const userReply = message.message.extendedTextMessage.text.trim();
 
-        } catch (e) {
-            console.error(e);
-            await reply("*Error occurred while processing the request!*");
+      // Handle the download format choice
+      if (message.message.extendedTextMessage.contextInfo.stanzaId === sentMessage.key.id) {
+        switch (userReply) {
+          case '1': // Audio File
+            await messageHandler.sendMessage(from, {
+              audio: { url: downloadLink },
+              mimetype: "audio/mpeg"
+            }, { quoted: quotedMessage });
+            break;
+          case '2': // Document File
+            await messageHandler.sendMessage(from, {
+              document: { url: downloadLink },
+              mimetype: 'audio/mpeg',
+              fileName: `${songData.title}.mp3`,
+              caption: `${songData.title}\n\n> NIMA MD BY LOKU NIMA®`
+            }, { quoted: quotedMessage });
+            break;
+          default:
+            reply("*Invalid Option. Please Select A Valid Option 🙄*");
+            break;
         }
+      }
     });
+  } catch (error) {
+    console.error(error);
+    reply("*An Error Occurred While Processing Your Request 😔*");
+  }
+});
